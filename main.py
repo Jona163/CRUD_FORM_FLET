@@ -43,3 +43,21 @@ class FormUi(ft.UserControl):
                             label_style = ft.TextStyle(color= "white"),
                             on_change = self.searh_data,
                         )     
+
+     
+        self.data_table =  ft.DataTable(
+                            expand= True,
+                            border=ft.border.all(2, "purple"),
+                            data_row_color = { ft.MaterialState.SELECTED: "purple", ft.MaterialState.PRESSED: "black"},
+                            border_radius=10,
+                            show_checkbox_column = True,
+                            columns=[
+                                ft.DataColumn(ft.Text("Nombre", color="purple", weight = "bold")),
+                                ft.DataColumn(ft.Text("Edad", color="purple", weight = "bold")),
+                                ft.DataColumn(ft.Text("Correo", color="purple", weight = "bold"), numeric=True),
+                                ft.DataColumn(ft.Text("Telefono", color="purple", weight = "bold"), numeric=True ),
+                            ],
+                        )        
+        
+       
+        self.show_data()
