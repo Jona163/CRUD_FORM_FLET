@@ -18,3 +18,28 @@ class PDF(FPDF):
         self.set_y(-15)
         self.set_font('Arial', 'I', 8)
         self.cell(0, 10, f'Página {self.page_no()}', 0, 0, 'C')
+
+class FormUi(ft.UserControl):
+    def __init__(self, page):
+        super().__init__(expand=True)
+        self.page = page 
+        self.data = ContactManager()
+        self.selected_row = None
+
+        self.name = ft.TextField(label="Nombre", border_color= "purple")
+        self.age = ft.TextField(label="Edad", border_color= "purple", 
+                                input_filter=ft.NumbersOnlyInputFilter(),
+                                max_length =2)
+        self.email =ft.TextField(label="Correo", border_color= "purple")
+        self.phone = ft.TextField(label="Telefono", border_color= "purple",
+                                  input_filter=ft.NumbersOnlyInputFilter(),
+                                  max_length=9)
+        
+        self.searh_field = ft.TextField(                        
+                            suffix_icon = ft.icons.SEARCH,
+                            label= "Buscar por el nombre",
+                            border= ft.InputBorder.UNDERLINE,
+                            border_color= "white",
+                            label_style = ft.TextStyle(color= "white"),
+                            on_change = self.searh_data,
+                        )     
