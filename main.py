@@ -205,3 +205,27 @@ class FormUi(ft.UserControl):
             else:
                 print("El contacto ya existe en la base de datos.")
         print("Escriba sus datos")
+
+
+    def get_index(self, e):
+        if e.control.selected:
+           e.control.selected = False
+        else: 
+            e.control.selected = True
+        name = e.control.cells[0].content.value
+        for row in self.data.get_contacts():
+            if row[1] == name:
+                self.selected_row = row
+                break
+        self.update()
+
+    def edit_flied_text(self, e):
+        try: 
+            self.name.value = self.selected_row[1]
+            self.age.value = self.selected_row[2]
+            self.email.value = self.selected_row[3]
+            self.phone.value = self.selected_row[4]   
+            self.update()
+        except TypeError:
+            print("Error")
+
