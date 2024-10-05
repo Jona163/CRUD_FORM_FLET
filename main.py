@@ -132,3 +132,17 @@ class FormUi(ft.UserControl):
                                     on_click= self.edit_flied_text,
                                     icon_color= "white",
                                 ),
+
+                               ft.IconButton(tooltip="Descargar en PDF",
+                                            icon = ft.icons.PICTURE_AS_PDF,
+                                            icon_color= "white",
+                                            on_click= self.save_pdf,
+                                            ),     
+                                ft.IconButton(tooltip="Descargar en EXCEL",
+                                        icon = ft.icons.SAVE_ALT,
+                                        icon_color= "white",
+                                        on_click= self.save_excel,
+                                        ),  
+                            ]
+                        ),
+                    ),
