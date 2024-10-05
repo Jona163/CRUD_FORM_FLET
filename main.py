@@ -61,3 +61,34 @@ class FormUi(ft.UserControl):
         
        
         self.show_data()
+
+
+
+        self.form = ft.Container(
+            bgcolor="#222222",
+            border_radius=10,
+            col=4,
+            padding= 10,
+            content= ft.Column(
+                alignment=ft.MainAxisAlignment.SPACE_AROUND,
+                horizontal_alignment = ft.CrossAxisAlignment.CENTER,
+                controls=[
+                    ft.Text("Ingrese sus datos",
+                            size=40,
+                            text_align="center",
+                            font_family = "vivaldi",),
+                    self.name,
+                    self.age,
+                    self.email,
+                    self.phone,
+                    ft.Container(
+                        content= ft.Row(
+                            spacing = 5,
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            controls= [
+                            ft.TextButton(text="Guardar",
+                                        icon = ft.icons.SAVE,
+                                        icon_color= "white",
+                                        style= ft.ButtonStyle(color = "white",  bgcolor ="purple"),
+                                        on_click= self.add_data,
+                                        ),
