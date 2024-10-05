@@ -269,3 +269,28 @@ class FormUi(ft.UserControl):
                     self.update()
         else:
             self.show_data()   
+
+
+    def clean_fields(self):
+        self.name.value = ""
+        self.age.value = ""
+        self.email.value = ""
+        self.phone.value = ""      
+        self.update() 
+   
+    def save_pdf(self, e):
+        pdf = PDF()
+        pdf.add_page()
+        column_widths = [10,40, 20, 80, 40]
+        # Agregar filas a la tabla
+        data = self.data.get_contacts()
+        header = ("ID", "NOMBRE", "EDAD", "CORREO", "TELEFONO")
+        data.insert(0, header)
+        for row in data:
+            for item, width in zip(row, column_widths):
+                pdf.cell(width, 10, str(item), border=1)
+            pdf.ln()
+        file_name =  datetime.datetime.now()
+        file_name = file_name.strftime("DATA %Y-%m-%d_%H-%M-%S") + ".pdf"
+        pdf.output(file_name)        
+
