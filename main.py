@@ -112,3 +112,23 @@ class FormUi(ft.UserControl):
                 ]
             )
         )
+
+
+        self.table = ft.Container(
+            bgcolor= "#222222",
+            border_radius=10,
+            padding= 10,
+            col = 8,
+            content= ft.Column(   
+                expand=True,           
+                controls=[
+                    ft.Container(
+                        padding = 10,
+                        content= ft.Row(
+                            controls=[
+                                self.searh_field,
+                                ft.IconButton(
+                                    icon= ft.icons.EDIT,
+                                    on_click= self.edit_flied_text,
+                                    icon_color= "white",
+                                ),
