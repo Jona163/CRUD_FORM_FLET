@@ -245,3 +245,27 @@ class FormUi(ft.UserControl):
     def delete_data(self, e):
         self.data.delete_contact(self.selected_row[1])
         self.show_data()
+
+
+
+    def  searh_data(self, e):
+        search = self.searh_field.value.lower()
+        name = list(filter(lambda x: search in x[1].lower(), self.data.get_contacts()))
+        self.data_table.rows = []
+        if not self.searh_field.value == "":
+            if len(name)>0:
+                for x in name:
+                    self.data_table.rows.append(
+                        ft.DataRow(
+                            on_select_changed=  self.get_index,
+                            cells=[
+                                ft.DataCell(ft.Text(x[1])),  
+                                ft.DataCell(ft.Text(str(x[2]))),  
+                                ft.DataCell(ft.Text(x[3])), 
+                                ft.DataCell(ft.Text(str(x[4]))),  
+                            ]
+                        )
+                    )
+                    self.update()
+        else:
+            self.show_data()   
