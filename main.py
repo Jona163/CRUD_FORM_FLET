@@ -92,3 +92,23 @@ class FormUi(ft.UserControl):
                                         style= ft.ButtonStyle(color = "white",  bgcolor ="purple"),
                                         on_click= self.add_data,
                                         ),
+
+
+                                                          ft.TextButton(text="Actualizar",
+                                        icon = ft.icons.UPDATE,
+                                        icon_color= "white",
+                                        style= ft.ButtonStyle(color = "white",  bgcolor ="purple"),
+                                        on_click=self.update_data,
+                                        ),    
+                            ft.TextButton(text="Borrar",
+                                        icon = ft.icons.DELETE,
+                                        icon_color= "white",
+                                        style= ft.ButtonStyle(color = "white",  bgcolor ="purple"),
+                                        on_click= self.delete_data,
+                                        ),                          
+                            ]
+                        )
+                    )
+                ]
+            )
+        )
