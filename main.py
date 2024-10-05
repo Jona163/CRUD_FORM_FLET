@@ -183,3 +183,25 @@ class FormUi(ft.UserControl):
                 )
             )
         self.update()
+
+
+    def  add_data(self, e):
+        name = self.name.value
+        age = str(self.age.value)
+        email = self.email.value
+        phone = str(self.phone.value)
+        
+        if len(name) and len(age) and len(email) and len(phone) > 0:
+            contact_exists = False
+            for row in self.data.get_contacts():
+                if row[1] == name:
+                    contact_exists = True
+                    break
+
+            if not contact_exists:
+                self.clean_fields()
+                self.data.add_contact(name, age, email, phone)
+                self.show_data()
+            else:
+                print("El contacto ya existe en la base de datos.")
+        print("Escriba sus datos")
