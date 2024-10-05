@@ -146,3 +146,23 @@ class FormUi(ft.UserControl):
                             ]
                         ),
                     ),
+
+                    
+                    ft.Column(
+                        expand= True, 
+                        scroll="auto",
+                        controls=[
+                        ft.ResponsiveRow([
+                            self.data_table
+                            ]),
+                        ]
+                    )
+                ]
+            )
+        )
+        self.conent = ft.ResponsiveRow(
+            controls=[
+                self.form,
+                self.table
+            ]
+        )
