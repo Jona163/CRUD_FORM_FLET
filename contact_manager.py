@@ -4,6 +4,8 @@
 # GitHub: https://github.com/Jona163
 
 import sqlite3
+import sql
+import os
 
 class ContactManager:
     def __init__(self):
