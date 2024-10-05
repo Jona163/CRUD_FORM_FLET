@@ -166,3 +166,20 @@ class FormUi(ft.UserControl):
                 self.table
             ]
         )
+
+  
+    def show_data(self):
+        self.data_table.rows = []
+        for x in self.data.get_contacts():
+            self.data_table.rows.append(
+                ft.DataRow(
+                    on_select_changed= self.get_index, 
+                    cells=[
+                        ft.DataCell(ft.Text(x[1])),  
+                        ft.DataCell(ft.Text(str(x[2]))),  
+                        ft.DataCell(ft.Text(x[3])),
+                        ft.DataCell(ft.Text(str(x[4]))),  
+                    ]
+                )
+            )
+        self.update()
