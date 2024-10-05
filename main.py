@@ -294,3 +294,25 @@ class FormUi(ft.UserControl):
         file_name = file_name.strftime("DATA %Y-%m-%d_%H-%M-%S") + ".pdf"
         pdf.output(file_name)        
 
+
+    def save_excel(self, e):
+        file_name =  datetime.datetime.now()
+        file_name = file_name.strftime("DATA %Y-%m-%d_%H-%M-%S") + ".xlsx"
+        contacts = self.data.get_contacts()
+        df = pd.DataFrame(contacts, columns=["ID", "Nombre", "Edad", "Correo", "Teléfono"])
+        df.to_excel(file_name, index=False)
+
+    def build(self):
+        return self.conent
+
+def main(page: ft.Page):
+    page.bgcolor = "black"
+    page.title = "CRUD SQLite"
+    page.window_min_width = 1100
+    page.window_min_height = 500
+    form_ui = FormUi(page)
+    form_ui.data.close_connection()
+    page.add(FormUi(page))
+
+
+ft.app(main) 
