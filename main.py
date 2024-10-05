@@ -229,3 +229,19 @@ class FormUi(ft.UserControl):
         except TypeError:
             print("Error")
 
+
+
+    def update_data(self,e):
+        name = self.name.value
+        age = str(self.age.value)
+        email = self.email.value
+        phone = str(self.phone.value)
+
+        if len(name) and len(age) and len(email) and len(phone) >0:
+            self.clean_fields()
+            self.data.update_contact(self.selected_row[0], name, age, email, phone)
+            self.show_data()
+
+    def delete_data(self, e):
+        self.data.delete_contact(self.selected_row[1])
+        self.show_data()
