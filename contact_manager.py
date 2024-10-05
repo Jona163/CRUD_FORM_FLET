@@ -21,3 +21,19 @@ class ContactManager:
         cursor.execute(query)
         contacts = cursor.fetchall()
         return contacts
+
+    def delete_contact(self, name):
+        query = "DELETE FROM datos WHERE NOMBRE = ?"
+        self.connection.execute(query, (name,))
+        self.connection.commit()
+
+    def update_contact(self, contact_id, name, age, email, phone):
+        query = '''UPDATE datos SET NOMBRE = ?, EDAD = ?, CORREO = ?, TELEFONO = ?
+                   WHERE ID = ?'''
+        self.connection.execute(query, (name, age, email, phone, contact_id))
+        self.connection.commit()
+        #return self.connection.total_changes
+
+    def close_connection(self):
+        self.connection.close()
+        print("cerrar")
