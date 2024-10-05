@@ -8,6 +8,8 @@ from contact_manager import ContactManager
 from fpdf import FPDF
 import pandas as pd
 import datetime
+import os 
+import sys
 
 class PDF(FPDF):
     def header(self):
